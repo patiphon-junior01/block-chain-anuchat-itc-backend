@@ -4,7 +4,7 @@ const { ethers } = require("ethers");
 const db = require("./lib/db");
 
 // Connect to Ethereum testnet (e.g., Goerli)
-const provider = new ethers.providers.JsonRpcProvider(
+const provider = new ethers.JsonRpcProvider(
   "https://goerli.infura.io/v3/YOUR_INFURA_PROJECT_ID"
 );
 
@@ -37,7 +37,7 @@ router.get("/balance", authenticateUser, async (req, res) => {
     );
     const address = result.rows[0].eth_address;
     const balance = await provider.getBalance(address);
-    res.json({ balance: ethers.utils.formatEther(balance) });
+    res.json({ balance: ethers.formatEther(balance) });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error fetching balance" });
@@ -56,7 +56,7 @@ router.post("/transfer", authenticateUser, async (req, res) => {
     const wallet = new ethers.Wallet(privateKey, provider);
     const tx = await wallet.sendTransaction({
       to: to,
-      value: ethers.utils.parseEther(amount),
+      value: ethers.parseEther(amount),
     });
 
     await tx.wait();

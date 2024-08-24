@@ -1,0 +1,7 @@
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(50) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  eth_address VARCHAR(42) UNIQUE NOT NULL,
+  private_key VARCHAR(66) NOT NULL
+);

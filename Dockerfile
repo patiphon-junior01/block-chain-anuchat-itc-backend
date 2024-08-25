@@ -1,13 +1,15 @@
-FROM node:18.20.4
+# Stage 1: Install dependencies
+FROM node:18-alpine AS build
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-WORKDIR /app
+# Install app dependencies
+COPY package.json yarn.lock /usr/src/app/
+RUN yarn install
 
-COPY package.json yarn.lock ./
-RUN apt-get update && apt-get install -y build-essential
-RUN yarn install --frozen-lockfile
-
-COPY . .
+# Bundle app source
+COPY . /usr/src/app
 
 EXPOSE 3005
-
-CMD ["node", "app.js"]
+CMD [ "yarn", "node", "app.js" ]

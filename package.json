@@ -1,6 +1,10 @@
 {
+  "name": "express-api",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
     "ethers": "^6.13.2",
     "express": "^4.19.2",

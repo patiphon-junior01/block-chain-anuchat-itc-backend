@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
-const db = require("./lib/db");
+const db = require("../../lib/db");
 const jwt = require("jsonwebtoken");
 require('dotenv').config();
-
 
 router.post("/", async (req, res) => {
   try {
@@ -16,7 +15,7 @@ router.post("/", async (req, res) => {
     if (result.rows.length > 0) {
       const user = result.rows[0];
       if (await bcrypt.compare(password, user.password)) {
-        const token = jwt.sign({ userId: user.id, username: username, }, process.env.JWT_SECRET, {
+        const token = jwt.sign({ userId: user.id, username: username, fullname: `${user.firstname} ${user.lastname}` }, process.env.JWT_SECRET, {
           expiresIn: "1h",
         });
         res.json({ message: "Login successful", token });

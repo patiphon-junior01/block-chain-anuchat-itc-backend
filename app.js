@@ -6,7 +6,7 @@ const port = 3005;
 const loginRouter = require("./controller/auth/login");
 const registerRouter = require("./controller/auth/register");
 
-const walletRouter = require("./wallet");
+const walletRouter = require("./controller/wallet/wallet");
 const authenticateUser = require("./middleware/handle");
 
 app.use(express.json());

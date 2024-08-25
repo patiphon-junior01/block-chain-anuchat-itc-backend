@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 // const { ethers, BigNumber } = require('ethers');
 const ethers = require('ethers');
-const db = require("./lib/db");
+const db = require("./../../lib/db");
 const jwt = require("jsonwebtoken");
 require('dotenv').config();
-const { fundWallet } = require("./utils/generate_gas")
-const { getBalanceITC, getBalanceGas } = require("./utils/global")
+const { fundWallet } = require("./../../utils/generate_gas")
+const { getBalanceITC, getBalanceGas } = require("./../../utils/global")
 
 
 

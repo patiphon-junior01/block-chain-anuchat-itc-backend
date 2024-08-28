@@ -28,6 +28,10 @@ const tokenAddress = process.env.TOKEN_ADDRESS;
 const tokenAddressEth = process.env.TOKEN_ADDRESS_ETH;
 
 
+router.get("/validate", async (req, res) => {
+  res.status(200).json({ message: "Pass To Dashboard" });
+});
+
 router.get("/count-account", async (req, res) => {
   try {
     const { userId } = req.user;

@@ -15,6 +15,10 @@ app.use("/api/login", loginRouter);
 app.use("/api/register", registerRouter);
 app.use("/api/wallet", authenticateUser, walletRouter);
 
+app.get("/api/test-api/test", (req, res) => {
+  return res.status(200).json({ message: "Test successful", data: [] });
+});
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
